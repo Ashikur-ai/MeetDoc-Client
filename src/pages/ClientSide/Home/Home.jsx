@@ -10,7 +10,7 @@ import Doctors from './Doctors';
 const Home = () => {
     return (
         <>
-            <Navbar></Navbar>
+            
             {/* banner */}
             <Banner></Banner>
 
@@ -27,7 +27,7 @@ const Home = () => {
             <Doctors></Doctors>
 
             {/* Footer  */}
-            <Footer></Footer>
+            
         </>
     );
 };
