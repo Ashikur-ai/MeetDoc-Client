@@ -1,17 +1,18 @@
 import React from 'react';
 import { FaUserDoctor } from "react-icons/fa6";
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <>
             <header className="text-gray-600 body-font">
                 <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-                    <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
-                        <a className="mr-5 hover:text-gray-900">First Link</a>
-                        <a className="mr-5 hover:text-gray-900">Second Link</a>
-                        <a className="mr-5 hover:text-gray-900">Third Link</a>
-                        <a className="hover:text-gray-900">Fourth Link</a>
-                    </nav>
+                    <NavLink className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+                        <Link to="/login" className="mr-5 hover:text-gray-900">Login</Link>
+                        <Link to="/register" className="mr-5 hover:text-gray-900">Register</Link>
+                        <Link className="mr-5 hover:text-gray-900">Third Link</Link>
+                        <Link className="hover:text-gray-900">Fourth Link</Link>
+                    </NavLink>
                     <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
                         <p className='text-3xl'><FaUserDoctor /></p>
                         <span className="ml-3 text-xl">MeetDoc</span>
