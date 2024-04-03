@@ -9,7 +9,7 @@ const Navbar = () => {
                 <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                     <NavLink className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
                         <Link to="/login" className="mr-5 hover:text-gray-900">Login</Link>
-                        <Link to="/register" className="mr-5 hover:text-gray-900">Register</Link>
+
                         <Link className="mr-5 hover:text-gray-900">Third Link</Link>
                         <Link className="hover:text-gray-900">Fourth Link</Link>
                     </NavLink>

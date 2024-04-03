@@ -6,6 +6,7 @@ import Home from "../pages/ClientSide/Home/Home";
 import Login from "../pages/ClientSide/Login/Login";
 import Register from "../pages/ClientSide/Register/Register";
 import MainLayout from "../Layout/MainLayout";
+import AllDoctors from "../pages/ClientSide/AllDoctors/AllDoctors";
 
  const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ import MainLayout from "../Layout/MainLayout";
                  path: "/register",
                  element: <Register></Register>
              },
+             {
+                 path: "/doctors",
+                 element: <AllDoctors></AllDoctors>
+             }
         ]
     },
      

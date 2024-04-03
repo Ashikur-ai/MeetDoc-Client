@@ -1,6 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useForm } from "react-hook-form";
+import { AuthContext } from '../../../provider/AuthProvider';
+
 
 const Register = () => {
+
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
+
+    const { createUser } = useContext(AuthContext);
+
+    const handleRegister = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, email, password);
+    }
+
+    const onSubmit = data => {
+        console.log(data);
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+        })
+    };
+
+
+
     return (
         <div className='min-h-screen'>
             <section className="text-gray-600 body-font ">
@@ -11,22 +44,37 @@ const Register = () => {
                             Simplify your scheduling, streamline your meetings, and elevate your productivity with our intuitive platform. From effortless appointment booking to seamless client communication, MeetDoc empowers you to take control of your schedule and focus on what truly matters. Join us and revolutionize the way you manage meetings today</p>
                     </div>
                     <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
-                        <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
-                        <div className="relative mb-4">
-                            <label for="full-name" className="leading-7 text-sm text-gray-600">Full Name</label>
-                            <input type="text" id="full-name" name="full-name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        </div>
-                        <div className="relative mb-4">
-                            <label for="email" className="leading-7 text-sm text-gray-600">Email</label>
-                            <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        </div>
+                        <form action="" onSubmit={handleSubmit(onSubmit)}>
+                            <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
+                            <div className="relative mb-4">
+                                <label  className="leading-7 text-sm text-gray-600">Full Name</label>
+                                <input {...register("name", {required:true})} type="text" id="full-name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                {errors.name && <span className='text-red-600'>Name is required</span>}
+                            </div>
+                            <div className="relative mb-4">
+                                <label for="email" className="leading-7 text-sm text-gray-600">Email</label>
+                                <input {...register("email", { required: true })} type="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                {errors.email && <span className='text-red-600'>Email is required</span>}
+                            </div>
 
-                        <div className="relative mb-4">
-                            <label for="email" className="leading-7 text-sm text-gray-600">Password</label>
-                            <input type="password" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        </div>
-                        <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Register</button>
-                        <p className="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+                            <div className="relative mb-4">
+                                <label  className="leading-7 text-sm text-gray-600">Password</label>
+                                <input type="password" {...register("password",
+                                    {
+                                        required: true,
+                                        minLength: 6,
+                                        maxLength: 20
+                                        
+                                    })} name="password" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                {errors.password?.type === 'required' && <span className='text-red-600'>Password is required</span>}
+                                
+                                {errors.password?.type==='minLength' && <span>Password must be 6 characters.</span>}
+                                {errors.password?.type==='maxLength' && <span>Password must be 20 characters.</span>}
+                                
+                            </div>
+                            <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Register</button>
+                            <p className="text-xs text-gray-500 mt-3">Literally you probably haven't heard of them jean shorts.</p>
+                        </form>
                     </div>
                 </div>
             </section>
