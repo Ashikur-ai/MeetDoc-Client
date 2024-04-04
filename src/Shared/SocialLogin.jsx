@@ -3,7 +3,9 @@ import { FaGoogle } from 'react-icons/fa6';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 const SocialLogin = () => {
+    const axiosPublic = useAxiosPublic();
     const { googleSignIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -13,6 +15,16 @@ const SocialLogin = () => {
         googleSignIn()
             .then(result => {
                 console.log(result.user);
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        console.log(res.data)
+                    })
+
                 Swal.fire({
                     position: "top-end",
                     icon: "success",

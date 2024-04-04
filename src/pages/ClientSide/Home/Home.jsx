@@ -6,10 +6,14 @@ import Navbar from '../../../Shared/Navbar';
 import Testimonial from './Testimonial';
 import Footer from '../../../Shared/Footer';
 import Doctors from './Doctors';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
         <>
+            <Helmet>
+                <title>MeetDoc</title>
+            </Helmet>
             
             {/* banner */}
             <Banner></Banner>

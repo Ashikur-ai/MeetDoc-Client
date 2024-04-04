@@ -3,18 +3,28 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../../provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../../Shared/SocialLogin';
-
+import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
+import { useNavigate, useLocation } from 'react-router-dom';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic();
 
     const {
         register,
         handleSubmit,
+        reset,
         watch,
         formState: { errors },
     } = useForm();
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -31,6 +41,33 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user added to the database');
+                                    reset();
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "Registration successful",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate(from, { replace: true });
+                                
+                            }
+                        })
+                        console.log('user profile info updated.')
+                        
+
+                    })
+                .catch(error=>console.log(error))
             })
     };
 
@@ -38,6 +75,9 @@ const Register = () => {
 
     return (
         <div className='min-h-screen'>
+            <Helmet>
+                <title>MeetDoc | Register</title>
+            </Helmet>
             <section className="text-gray-600 body-font ">
                 <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
                     <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
@@ -53,6 +93,14 @@ const Register = () => {
                                 <input {...register("name", { required: true })} type="text" id="full-name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 {errors.name && <span className='text-red-600'>Name is required</span>}
                             </div>
+
+                            <div className="relative mb-4">
+                                <label className="leading-7 text-sm text-gray-600">Photo URL</label>
+                                <input {...register("photoURL", { required: true })} type="text" id="full-name" name="photoURL" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                {errors.photoURL && <span className='text-red-600'>PhotoURL is required</span>}
+                            </div>
+
+
                             <div className="relative mb-4">
                                 <label for="email" className="leading-7 text-sm text-gray-600">Email</label>
                                 <input {...register("email", { required: true })} type="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />

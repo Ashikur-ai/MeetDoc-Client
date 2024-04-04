@@ -3,6 +3,7 @@ import { AuthContext } from '../../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SocialLogin from '../../../Shared/SocialLogin';
+import { Helmet } from 'react-helmet-async';
 const Login = () => {
 
     const { signIn } = useContext(AuthContext);
@@ -33,6 +34,9 @@ const Login = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>MeetDoc | Login</title>
+            </Helmet>
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-col text-center w-full mb-12">
