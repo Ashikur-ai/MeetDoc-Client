@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import SocialLogin from '../../../Shared/SocialLogin';
 const Login = () => {
 
     const { signIn } = useContext(AuthContext);
@@ -36,7 +37,7 @@ const Login = () => {
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-col text-center w-full mb-12">
                         <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Connect with your Doctor effortlessly and manage meetings seamlessly</h1>
-                        <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Welcome back! Please sign in to access your account and manage your appointments seamlessly. Forgot your password? No worries, we've got you covered—simply click on the 'Forgot Password?' link to reset it.</p>
+                        <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Welcome back! Please sign in to access your account and manage your appointments seamlessly. <br />Don't have any account? <Link to="/register">Register</Link></p>
                     </div>
                     <form action="" onSubmit={handleLogin}>
                         <div className="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
@@ -53,6 +54,7 @@ const Login = () => {
                             <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Login</button>
                         </div>
                     </form>
+                    <SocialLogin></SocialLogin>
                 </div>
             </section>
         </>
