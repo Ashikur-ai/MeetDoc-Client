@@ -1,14 +1,34 @@
 import React, { useContext } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 import { FaUserDoctor } from "react-icons/fa6";
+import useAdmin from '../../../hooks/useAdmin';
+import useDoctor from '../../../hooks/useDoctor';
+import Swal from 'sweetalert2';
 
 const UserDashboard = () => {
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    const [isDoctor] = useDoctor();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    console.log(isAdmin);
+    console.log(isDoctor);
     const { logOut } = useContext(AuthContext);
     const handleLogout = () => {
         logOut()
-            .then()
+            .then(() => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Logout successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate(from, { replace: true });
+            })
             .catch()
     }
     return (
@@ -29,7 +49,7 @@ const UserDashboard = () => {
                                 <label for="" className="sr-only"> Search </label>
                                 <div className="relative">
                                     {
-                                        isAdmin ? <p className=' text-2xl'>Admin Dashboard</p> :
+                                        isAdmin ? <p className=' text-2xl'>Admin Dashboard</p> : isDoctor ? <><p className=' text-2xl'>Doctor Dashboard</p></> :
                                             <p className=' text-2xl'>User Dashboard</p>
                                     }
 
@@ -49,10 +69,7 @@ const UserDashboard = () => {
                                         {
                                             isAdmin ?
                                                 <>
-                                                    <NavLink to="/dashboard" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                        Admin Dashboard
-                                                    </NavLink>
 
                                                     <NavLink to="/dashboard/manageUsers" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
@@ -70,31 +87,39 @@ const UserDashboard = () => {
                                                     </NavLink>
 
 
-                                                </> :
+                                                </> : isDoctor ?
+                                                    <>
+                                                        <NavLink to="/dashboard/manageUsers" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                <>
-                                                    <NavLink to="/dashboard/edit" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+                                                            Edit profile
+                                                        </NavLink>
 
-                                                        Edit BioData
-                                                    </NavLink>
+                                                        <NavLink to="/dashboard/manageUsers" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                    <NavLink to="/dashboard/view" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+                                                            Manage Meetings
+                                                        </NavLink>
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <NavLink to="/dashboard/edit" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                        View BioData
-                                                    </NavLink>
+                                                            Edit Profile
+                                                        </NavLink>
 
-                                                    <NavLink to="/dashboard/request" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+                                                        <NavLink to="/dashboard/view" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                        My Contact Request
-                                                    </NavLink>
+                                                            View Meeting Status
+                                                        </NavLink>
 
-                                                    <NavLink to="/dashboard/favourite" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+                                                        <NavLink to="/dashboard/request" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                        Favourite Biodata
-                                                    </NavLink>
+                                                            Cancel Request
+                                                        </NavLink>
+
+                                                        
 
 
-                                                </>
+                                                    </>
                                         }
 
                                         <NavLink onClick={handleLogout} className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">

@@ -11,6 +11,7 @@ import UserDashboard from "../pages/ClientSide/UserDashboard/UserDashboard";
 import ManageUsers from "../pages/AdminSide/ManageUsers";
 import ManageDoctors from "../pages/AdminSide/ManageDoctors";
 import DocRegister from "../pages/ClientSide/Register/DocRegister";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <UserDashboard></UserDashboard>,
+        element: <PrivateRoute><UserDashboard></UserDashboard></PrivateRoute>,
         children: [
             {
                 path: 'manageUsers',

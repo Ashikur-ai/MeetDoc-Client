@@ -3,13 +3,19 @@ import { FaUserDoctor } from "react-icons/fa6";
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import useAdmin from '../hooks/useAdmin';
+import useDoctor from '../hooks/useDoctor';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    
+    const [isAdmin] = useAdmin();
+    const [isDoctor] = useDoctor();
+    console.log(isDoctor);
+    console.log(isAdmin);
+
     const handleLogout = () => {
         logOut()
-            .then(() => { 
+            .then(() => {
 
                 Swal.fire({
                     position: "top-end",
@@ -33,12 +39,12 @@ const Navbar = () => {
                         <Link className="mx-5 hover:text-gray-900">Fourth Link</Link>
 
                         {
-                            user ? 
+                            user ?
                                 <><button onClick={handleLogout} className='btn btn-ghost'>Logout</button></> :
                                 <> <Link to="/login" className="hover:text-gray-900">login </Link></>
                         }
 
-                       
+
 
 
                     </NavLink>
