@@ -56,12 +56,12 @@ const UserDashboard = () => {
 
                                                     <NavLink to="/dashboard/manageUsers" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                        Manage Doctors
+                                                        Manage Users
                                                     </NavLink>
 
-                                                    <NavLink to="/dashboard/premium" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+                                                    <NavLink to="/dashboard/manageDoctors" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                        Approved Premium
+                                                        Manage Doctors
                                                     </NavLink>
 
                                                     <NavLink to="/dashboard/request" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">

@@ -9,6 +9,8 @@ import MainLayout from "../Layout/MainLayout";
 import AllDoctors from "../pages/ClientSide/AllDoctors/AllDoctors";
 import UserDashboard from "../pages/ClientSide/UserDashboard/UserDashboard";
 import ManageUsers from "../pages/AdminSide/ManageUsers";
+import ManageDoctors from "../pages/AdminSide/ManageDoctors";
+import DocRegister from "../pages/ClientSide/Register/DocRegister";
 
 
 
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: "/doctors",
                 element: <AllDoctors></AllDoctors>
+            },
+            {
+                path: "/docRegister",
+                element: <DocRegister></DocRegister>
             }
         ]
     },
@@ -42,6 +48,10 @@ const router = createBrowserRouter([
             {
                 path: 'manageUsers',
                 element: <ManageUsers></ManageUsers>
+            },
+            {
+                path: 'manageDoctors',
+                element: <ManageDoctors></ManageDoctors>
             }
         ]
 

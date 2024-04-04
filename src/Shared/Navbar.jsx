@@ -42,10 +42,10 @@ const Navbar = () => {
 
 
                     </NavLink>
-                    <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+                    <Link to="/" className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
                         <p className='text-3xl'><FaUserDoctor /></p>
                         <span className="ml-3 text-xl">MeetDoc</span>
-                    </a>
+                    </Link>
                     <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
                         <Link to="/dashboard">
                             <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Dashboard
