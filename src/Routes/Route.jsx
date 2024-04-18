@@ -19,6 +19,8 @@ import SetMeeting from "../pages/ClientSide/SetMeeting/SetMeeting";
 import ManageMeeting from "../pages/ClientSide/ManageMeeting/ManageMeeting";
 import UpdateClientProfile from "../pages/ClientSide/UpdateClientProfile/UpdateClientProfile";
 import ClientProfile from "../pages/ClientSide/ClientProfile/ClientProfile";
+import Doc_ManageMeeting from "../pages/DoctorSide/Doc_ManageMeeting/Doc_ManageMeeting";
+import MeetingRequest from "../pages/AdminSide/MeetingRequest/MeetingRequest";
 
 
 
@@ -74,6 +76,10 @@ const router = createBrowserRouter([
                 path: 'manageDoctors',
                 element: <ManageDoctors></ManageDoctors>
             },
+            {
+                path: 'request',
+                element: <MeetingRequest></MeetingRequest>
+            },
             
             // doctor url
             {
@@ -84,6 +90,10 @@ const router = createBrowserRouter([
                 path: 'docProfile/:email',
                 element: <DocProfile></DocProfile>,
                 loader: ({ params }) => fetch(`http://localhost:5000/doctor/${params.email}`)
+            },
+            {
+                path: "doc_manageMeeting",
+                element: <Doc_ManageMeeting></Doc_ManageMeeting>
             },
 
             // user urls 

@@ -14,8 +14,7 @@ const UserDashboard = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    console.log(isAdmin);
-    console.log(isDoctor);
+    
     const { logOut, user } = useContext(AuthContext);
     const handleLogout = () => {
         logOut()
@@ -83,7 +82,7 @@ const UserDashboard = () => {
 
                                                     <NavLink to="/dashboard/request" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                        Approved Contact Request
+                                                        Approved Meeting Request
                                                     </NavLink>
 
 
@@ -99,9 +98,9 @@ const UserDashboard = () => {
                                                             Edit Doctor profile
                                                         </NavLink>
 
-                                                        <NavLink to="/dashboard/manageUsers" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+                                                        <NavLink to="/dashboard/doc_manageMeeting" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                            Manage Meetings
+                                                            Your Meetings
                                                         </NavLink>
                                                     </>
                                                     :

@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../../../provider/AuthProvider';
+import { FaDonate } from 'react-icons/fa';
 
 
 const ManageMeeting = () => {
@@ -49,6 +50,24 @@ const ManageMeeting = () => {
             }
         });
     }
+
+    const handlePayment = (meeting) => {
+        axiosPublic.patch(`/acceptPayment/${meeting._id}`)
+            .then(res => {
+                if (res.data.modifiedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `Request is accepted`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            
+        })
+    }
+
     return (
         <div>
             <Helmet>
@@ -67,7 +86,8 @@ const ManageMeeting = () => {
                             <th>Doctor Name</th>
                             <th>Time</th>
                             <th>Venue</th>
-                            <th>Status</th>
+                            <th>Request Status</th>
+                            <th>Payment</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -83,10 +103,13 @@ const ManageMeeting = () => {
 
                                     </td>
                                     <td>
-                                        {meeting.status ? <>{meeting.status}</> : <p>Not accepted yet!</p>}
+                                        {meeting.status ? <p className='text-2xl text-green-600'>{meeting.status}</p> : <p>Not accepted yet!</p>}
                                     </td>
                                     <td>
-                                        <button onClick={() => handleDeleteMeeting(meeting)} className="btn btn-ghost btn-2xl"><FaTrash></FaTrash></button>
+                                    <button onClick={() => handlePayment(meeting)} className="btn text-2xl btn-ghost btn-2xl">{meeting?.payment ? <p className='text-2xl text-green-600'>{meeting.payment}</p> : <FaDonate></FaDonate> }</button>
+                                    </td>
+                                    <td>
+                                        <button onClick={() => handleDeleteMeeting(meeting)} className="btn btn-ghost text-2xl btn-2xl"><FaTrash></FaTrash></button>
                                     </td>
                                 </tr>)
                                 :
