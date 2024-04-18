@@ -106,9 +106,14 @@ const UserDashboard = () => {
                                                     </>
                                                     :
                                                     <>
-                                                        <NavLink to="/dashboard/edit" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+                                                        <NavLink to={`/dashboard/myProfile/${user.email}`} className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                            Edit Profile
+                                                            Your Profile
+                                                        </NavLink>
+
+                                                        <NavLink to="/dashboard/updateProfile" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+
+                                                            Update Profile
                                                         </NavLink>
 
                                                         <NavLink to={`/dashboard/manageMeetings/${user.email}`} className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
@@ -116,10 +121,7 @@ const UserDashboard = () => {
                                                             ManageMeetings
                                                         </NavLink>
 
-                                                        <NavLink to="/dashboard/request" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
-
-                                                            Cancel Request
-                                                        </NavLink>
+                                                        
 
                                                         
 

@@ -87,10 +87,18 @@ const SetMeeting = () => {
                         </select>
                     </div>
 
-                    <div className="relative mb-4">
-                        <label className="leading-7 text-sm text-gray-600">Meeting Venue</label>
-                        <input type="text" name="venue" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <div className='relative mb-4'>
+                        <label className="leading-7 text-sm text-gray-600" >Select Venue</label>
+
+                        <select className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" name="venue">
+                            <option selected value="">Select a venue</option>
+                            <option value="Dhaka Medical College">Dhaka Medical College</option>
+                            <option value="Mirpur Diagonostic Center">Mirpur Diagonostic Center</option>
+                            <option value="Apllo Hospital">Apllo Hospital</option>
+                        </select>
                     </div>
+
+                    
 
                     <div className="relative mb-4">
                         <label className="leading-7 text-sm text-gray-600">Provide info about sickness</label>

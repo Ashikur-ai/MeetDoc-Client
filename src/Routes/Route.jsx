@@ -17,6 +17,8 @@ import DocProfile from "../pages/DoctorSide/DocProfile";
 import DoctorProfile from "../pages/ClientSide/DoctorProfile/DoctorProfile";
 import SetMeeting from "../pages/ClientSide/SetMeeting/SetMeeting";
 import ManageMeeting from "../pages/ClientSide/ManageMeeting/ManageMeeting";
+import UpdateClientProfile from "../pages/ClientSide/UpdateClientProfile/UpdateClientProfile";
+import ClientProfile from "../pages/ClientSide/ClientProfile/ClientProfile";
 
 
 
@@ -89,6 +91,15 @@ const router = createBrowserRouter([
                 path: 'manageMeetings/:email',
                 element: <ManageMeeting></ManageMeeting>,
                 loader: ({ params }) => fetch(`http://localhost:5000/getMeeting/${params.email}`)
+            },
+            {
+                path: 'myProfile/:email',
+                element: <ClientProfile></ClientProfile>,
+                loader: ({ params }) => fetch(`http://localhost:5000/users/${params.email}`)
+            },
+            {
+                path: 'updateProfile',
+                element: <UpdateClientProfile></UpdateClientProfile>
             }
         ]
 
