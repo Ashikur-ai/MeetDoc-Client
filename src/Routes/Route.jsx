@@ -14,6 +14,9 @@ import DocRegister from "../pages/ClientSide/Register/DocRegister";
 import PrivateRoute from "./PrivateRoute";
 import EditProfile from "../pages/DoctorSide/EditProfile";
 import DocProfile from "../pages/DoctorSide/DocProfile";
+import DoctorProfile from "../pages/ClientSide/DoctorProfile/DoctorProfile";
+import SetMeeting from "../pages/ClientSide/SetMeeting/SetMeeting";
+import ManageMeeting from "../pages/ClientSide/ManageMeeting/ManageMeeting";
 
 
 
@@ -41,6 +44,17 @@ const router = createBrowserRouter([
             {
                 path: "/docRegister",
                 element: <DocRegister></DocRegister>
+            },
+            {
+                path: "/docDetails/:email",
+                element: <DoctorProfile></DoctorProfile>,
+                loader: ({ params }) => fetch(`http://localhost:5000/doctor/${params.email}`)
+
+            },
+            {
+                path: "/setMeeting/:email",
+                element: <SetMeeting></SetMeeting>,
+                loader: ({ params }) => fetch(`http://localhost:5000/doctor/${params.email}`)
             }
         ]
     },
@@ -68,6 +82,13 @@ const router = createBrowserRouter([
                 path: 'docProfile/:email',
                 element: <DocProfile></DocProfile>,
                 loader: ({ params }) => fetch(`http://localhost:5000/doctor/${params.email}`)
+            },
+
+            // user urls 
+            {
+                path: 'manageMeetings/:email',
+                element: <ManageMeeting></ManageMeeting>,
+                loader: ({ params }) => fetch(`http://localhost:5000/getMeeting/${params.email}`)
             }
         ]
 

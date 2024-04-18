@@ -34,7 +34,7 @@ const Navbar = () => {
                     <NavLink className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
 
 
-                        <Link className=" hover:text-gray-900">Third Link</Link>
+                        <Link to="/doctors" className=" hover:text-gray-900">Our Doctors</Link>
 
                         <Link className="mx-5 hover:text-gray-900">Fourth Link</Link>
 

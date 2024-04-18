@@ -111,9 +111,9 @@ const UserDashboard = () => {
                                                             Edit Profile
                                                         </NavLink>
 
-                                                        <NavLink to="/dashboard/view" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+                                                        <NavLink to={`/dashboard/manageMeetings/${user.email}`} className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                            View Meeting Status
+                                                            ManageMeetings
                                                         </NavLink>
 
                                                         <NavLink to="/dashboard/request" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
