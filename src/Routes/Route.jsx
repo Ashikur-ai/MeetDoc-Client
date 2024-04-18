@@ -12,6 +12,8 @@ import ManageUsers from "../pages/AdminSide/ManageUsers";
 import ManageDoctors from "../pages/AdminSide/ManageDoctors";
 import DocRegister from "../pages/ClientSide/Register/DocRegister";
 import PrivateRoute from "./PrivateRoute";
+import EditProfile from "../pages/DoctorSide/EditProfile";
+import DocProfile from "../pages/DoctorSide/DocProfile";
 
 
 
@@ -46,6 +48,8 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><UserDashboard></UserDashboard></PrivateRoute>,
         children: [
+        
+        // admin url 
             {
                 path: 'manageUsers',
                 element: <ManageUsers></ManageUsers>
@@ -53,6 +57,17 @@ const router = createBrowserRouter([
             {
                 path: 'manageDoctors',
                 element: <ManageDoctors></ManageDoctors>
+            },
+            
+            // doctor url
+            {
+                path: 'editDocProfile',
+                element: <EditProfile></EditProfile>
+            },
+            {
+                path: 'docProfile/:email',
+                element: <DocProfile></DocProfile>,
+                loader: ({ params }) => fetch(`http://localhost:5000/doctor/${params.email}`)
             }
         ]
 

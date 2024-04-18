@@ -16,7 +16,7 @@ const UserDashboard = () => {
 
     console.log(isAdmin);
     console.log(isDoctor);
-    const { logOut } = useContext(AuthContext);
+    const { logOut, user } = useContext(AuthContext);
     const handleLogout = () => {
         logOut()
             .then(() => {
@@ -89,9 +89,14 @@ const UserDashboard = () => {
 
                                                 </> : isDoctor ?
                                                     <>
-                                                        <NavLink to="/dashboard/manageUsers" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+                                                        <NavLink to={`/dashboard/docProfile/${user.email}`}  className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                            Edit profile
+                                                            My Profile
+                                                        </NavLink>
+
+                                                        <NavLink to="/dashboard/editDocProfile" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+
+                                                            Edit Doctor profile
                                                         </NavLink>
 
                                                         <NavLink to="/dashboard/manageUsers" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
