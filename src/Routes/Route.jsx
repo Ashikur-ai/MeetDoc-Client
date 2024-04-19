@@ -21,6 +21,9 @@ import UpdateClientProfile from "../pages/ClientSide/UpdateClientProfile/UpdateC
 import ClientProfile from "../pages/ClientSide/ClientProfile/ClientProfile";
 import Doc_ManageMeeting from "../pages/DoctorSide/Doc_ManageMeeting/Doc_ManageMeeting";
 import MeetingRequest from "../pages/AdminSide/MeetingRequest/MeetingRequest";
+import ContactPage from "../pages/ClientSide/ContactPage/ContactPage";
+import AboutPage from "../pages/ClientSide/AboutPage/AboutPage";
+import CategoryDoc from "../pages/ClientSide/CategoryDoc/CategoryDoc";
 
 
 
@@ -46,6 +49,14 @@ const router = createBrowserRouter([
                 element: <AllDoctors></AllDoctors>
             },
             {
+                path: "/contact",
+                element: <ContactPage></ContactPage>
+            },
+            {
+                path: "/about",
+                element: <AboutPage></AboutPage>
+            },
+            {
                 path: "/docRegister",
                 element: <DocRegister></DocRegister>
             },
@@ -59,6 +70,13 @@ const router = createBrowserRouter([
                 path: "/setMeeting/:email",
                 element: <SetMeeting></SetMeeting>,
                 loader: ({ params }) => fetch(`http://localhost:5000/doctor/${params.email}`)
+            },
+
+            // category routes 
+            {
+                path: "/doctors/:category",
+                element: <CategoryDoc></CategoryDoc>,
+                loader: ({ params }) => fetch(`http://localhost:5000/doctors/${params.category}`)
             }
         ]
     },
