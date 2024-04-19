@@ -76,13 +76,14 @@ const DocRegister = () => {
             </Helmet>
             <section className="text-gray-600 body-font ">
                 <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
-                    <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+                    <div className="lg:w-3/5 md:w-1/2 items-center text-center md:pr-16 lg:pr-0 pr-0">
+                        <img src="https://i.ibb.co/HXjnrNx/DNA-bro.png" className='w-1/2' alt="" />
                         <h1 className="title-font font-medium text-3xl text-gray-900">Work with use. Register as a Doctor and serve the community.</h1>
                        
                     </div>
                     <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
                         <form action="" onSubmit={handleSubmit(onSubmit)}>
-                            <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
+                            <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Doctor's Sign Up</h2>
                             <div className="relative mb-4">
                                 <label className="leading-7 text-sm text-gray-600">Full Name</label>
                                 <input {...register("name", { required: true })} type="text" id="full-name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />

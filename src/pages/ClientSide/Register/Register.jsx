@@ -81,6 +81,7 @@ const Register = () => {
             <section className="text-gray-600 body-font ">
                 <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
                     <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+                        <img className='w-1/2  object-center mx-auto object-cover' src="https://i.ibb.co/0htmnNN/Learning-pana.png" alt="img" />
                         <h1 className="title-font font-medium text-3xl text-gray-900">Welcome to MeetDoc: Your Ultimate Meeting Management Solution!</h1>
                         <p className="leading-relaxed mt-4">
                             Simplify your scheduling, streamline your meetings, and elevate your productivity with our intuitive platform. From effortless appointment booking to seamless client communication, MeetDoc empowers you to take control of your schedule and focus on what truly matters. Join us and revolutionize the way you manage meetings today</p>
