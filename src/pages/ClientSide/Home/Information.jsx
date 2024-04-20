@@ -3,6 +3,8 @@ import { CiClock2 } from "react-icons/ci";
 import { ImLocation2 } from "react-icons/im";
 import { FaHeadphonesSimple } from "react-icons/fa6";
 const Information = () => {
+
+    
     return (
         <>
             <section className="text-gray-600 body-font">
@@ -41,7 +43,7 @@ const Information = () => {
                                 </div>
                                 <div className="flex-grow">
                                     <h2 className="text-gray-900 text-lg title-font font-medium">Our Locations</h2>
-                                    <p className="leading-relaxed text-base">Dhanmondi 17, Dhaka -1200, Bangladesh</p>
+                                    <p className="leading-relaxed text-base">Mirpur-1, Dhaka -1205, Bangladesh</p>
                                     <a className="mt-3 text-indigo-500 inline-flex items-center">Learn More
                                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                             <path d="M5 12h14M12 5l7 7-7 7"></path>
