@@ -120,6 +120,11 @@ const UserDashboard = () => {
                                                             ManageMeetings
                                                         </NavLink>
 
+                                                        <NavLink to={`/dashboard/payments/${user.email}`} className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+
+                                                            Payments
+                                                        </NavLink>
+
                                                         
 
                                                         

@@ -24,6 +24,8 @@ import MeetingRequest from "../pages/AdminSide/MeetingRequest/MeetingRequest";
 import ContactPage from "../pages/ClientSide/ContactPage/ContactPage";
 import AboutPage from "../pages/ClientSide/AboutPage/AboutPage";
 import CategoryDoc from "../pages/ClientSide/CategoryDoc/CategoryDoc";
+import Payment from "../pages/ClientSide/Payment/Payment";
+import Payments from "../pages/ClientSide/Payments/Payments";
 
 
 
@@ -70,6 +72,11 @@ const router = createBrowserRouter([
                 path: "/setMeeting/:email",
                 element: <SetMeeting></SetMeeting>,
                 loader: ({ params }) => fetch(`http://localhost:5000/doctor/${params.email}`)
+            },
+            {
+                path: "/payment/:id",
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/meetings/${params.id}`)
             },
 
             // category routes 
@@ -119,6 +126,11 @@ const router = createBrowserRouter([
                 path: 'manageMeetings/:email',
                 element: <ManageMeeting></ManageMeeting>,
                 loader: ({ params }) => fetch(`http://localhost:5000/getMeeting/${params.email}`)
+            },
+            {
+                path: 'payments/:email',
+                element: <Payments></Payments>,
+                loader: ({ params }) => fetch(`http://localhost:5000/payments/${params.email}`)
             },
             {
                 path: 'myProfile/:email',

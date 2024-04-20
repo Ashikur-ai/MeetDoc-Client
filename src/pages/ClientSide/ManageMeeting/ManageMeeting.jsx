@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaTrash } from 'react-icons/fa6';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
@@ -87,8 +87,9 @@ const ManageMeeting = () => {
                             <th>Time</th>
                             <th>Venue</th>
                             <th>Request Status</th>
-                            <th>Payment</th>
+                            <th>Payment Status</th>
                             <th>Action</th>
+                            <th>Make Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,10 +107,13 @@ const ManageMeeting = () => {
                                         {meeting.status ? <p className='text-2xl text-green-600'>{meeting.status}</p> : <p>Not accepted yet!</p>}
                                     </td>
                                     <td>
-                                    <button onClick={() => handlePayment(meeting)} className="btn text-2xl btn-ghost btn-2xl">{meeting?.payment ? <p className='text-2xl text-green-600'>{meeting.payment}</p> : <FaDonate></FaDonate> }</button>
+                                    <button className="btn text-2xl btn-ghost btn-2xl">{meeting?.payment ? <p className='text-2xl text-green-600'>{meeting.payment}</p> : <p className='text-2xl text-red-600'>Unpaid</p> }</button>
                                     </td>
                                     <td>
                                         <button onClick={() => handleDeleteMeeting(meeting)} className="btn btn-ghost text-2xl btn-2xl"><FaTrash></FaTrash></button>
+                                    </td>
+                                    <td>
+                                        <Link to={`/payment/${meeting._id}`}><button className="btn btn-primary text-xl btn-2xl">Pay</button></Link>
                                     </td>
                                 </tr>)
                                 :

@@ -1,6 +1,7 @@
 import React from 'react';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const Doctors = () => {
     const axiosPublic = useAxiosPublic();
@@ -29,20 +30,23 @@ const Doctors = () => {
                         </div>
                         <p className="lg:w-1/2 w-full leading-relaxed text-gray-500">Meet Our Expert Doctors: Our team of highly qualified and experienced medical professionals is dedicated to providing exceptional care and expertise in their respective fields. From board-certified specialists to renowned surgeons, our doctors are committed to delivering personalized and compassionate healthcare to every patient. With expertise spanning various medical specialties, our team is here to address your unique healthcare needs and guide you on your journey to optimal health and wellness.</p>
                     </div>
-                    <div className="flex flex-wrap -m-4">
+
+                    <div className="grid lg:grid-cols-4">
                         {
                             bestDoc?.map(doctor =>
-                                <div key={doctor._id} className="xl:w-1/4 md:w-1/2 p-4">
-                                <div className="bg-gray-100 p-6 rounded-lg">
-                                    <img className="     rounded w-full object-cover object-center mb-6" src={doctor?.url} alt="content" />
-                                    <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">{doctor?.category}</h3>
-                                        <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{ doctor?.name }</h2>
-                                    <p className="leading-relaxed text-base"></p>
+                                
+                                <div key={doctor._id} className="card m-5 glass">
+                                    <Link to={`/docDetails/${doctor.email}`}><figure><img className='' src={doctor?.url} alt="car!" /></figure></Link>
+                                <div className="card-body">
+                                    <h2 className="card-title">{ doctor.name }</h2>
+                                    <p>{doctor.category}</p>              
                                 </div>
-                            </div>)
+                                </div>
+                            )
                         }
-                        
                     </div>
+
+                    
                 </div>
             </section>
         </>
