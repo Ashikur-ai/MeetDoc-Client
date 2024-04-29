@@ -81,7 +81,7 @@ const Register = () => {
             <section className="text-gray-600 body-font ">
                 <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
                     <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
-                        <img className='w-1/2  object-center mx-auto object-cover' src="https://i.ibb.co/0htmnNN/Learning-pana.png" alt="img" />
+                        <img className='w-1/2   mx-auto object-cover' src="https://i.ibb.co/L8jb7pz/register.png" alt="img" />
                         <h1 className="title-font font-medium text-3xl text-gray-900">Welcome to MeetDoc: Your Ultimate Meeting Management Solution!</h1>
                         <p className="leading-relaxed mt-4">
                             Simplify your scheduling, streamline your meetings, and elevate your productivity with our intuitive platform. From effortless appointment booking to seamless client communication, MeetDoc empowers you to take control of your schedule and focus on what truly matters. Join us and revolutionize the way you manage meetings today</p>
@@ -123,6 +123,24 @@ const Register = () => {
                                 {errors.password?.type === 'maxLength' && <span>Password must be 20 characters.</span>}
 
                             </div>
+                            
+                            <div className="relative mb-4">
+                                <label className="leading-7 text-sm text-gray-600">Re-type Password</label>
+                                <input type="password" {...register("password",
+                                    {
+                                        required: true,
+                                        minLength: 6,
+                                        maxLength: 20
+
+                                    })} name="r_password" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                {errors.password?.type === 'required' && <span className='text-red-600'>Password is required</span>}
+
+                                {errors.password?.type === 'minLength' && <span>Password must be 6 characters.</span>}
+                                {errors.password?.type === 'maxLength' && <span>Password must be 20 characters.</span>}
+
+                            </div>
+
+
                             <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Register</button>
                             <p className="text-xs text-gray-500 mt-3">Already have an account? <Link to="/login">login</Link></p>
                         </form>

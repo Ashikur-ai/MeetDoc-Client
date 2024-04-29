@@ -64,8 +64,8 @@ const ManageMeeting = () => {
                         timer: 1500
                     });
                 }
-            
-        })
+
+            })
     }
 
     return (
@@ -107,7 +107,7 @@ const ManageMeeting = () => {
                                         {meeting.status ? <p className='text-2xl text-green-600'>{meeting.status}</p> : <p>Not accepted yet!</p>}
                                     </td>
                                     <td>
-                                    <button className="btn text-2xl btn-ghost btn-2xl">{meeting?.payment ? <p className='text-2xl text-green-600'>{meeting.payment}</p> : <p className='text-2xl text-red-600'>Unpaid</p> }</button>
+                                        <button className="btn text-2xl btn-ghost btn-2xl">{meeting?.payment ? <p className='text-2xl text-green-600'>{meeting.payment}</p> : <p className='text-2xl text-red-600'>Unpaid</p>}</button>
                                     </td>
                                     <td>
                                         <button onClick={() => handleDeleteMeeting(meeting)} className="btn btn-ghost text-2xl btn-2xl"><FaTrash></FaTrash></button>

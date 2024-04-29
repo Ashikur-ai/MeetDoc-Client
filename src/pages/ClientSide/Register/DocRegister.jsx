@@ -77,7 +77,7 @@ const DocRegister = () => {
             <section className="text-gray-600 body-font ">
                 <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
                     <div className="lg:w-3/5 md:w-1/2 items-center text-center md:pr-16 lg:pr-0 pr-0">
-                        <img src="https://i.ibb.co/HXjnrNx/DNA-bro.png" className='w-1/2' alt="" />
+                        <img src="https://i.ibb.co/j8jMqKD/doc-reg.png" className='w-2/3 mx-auto' alt="" />
                         <h1 className="title-font font-medium text-3xl text-gray-900">Work with use. Register as a Doctor and serve the community.</h1>
                        
                     </div>
@@ -112,6 +112,22 @@ const DocRegister = () => {
                                         maxLength: 20
 
                                     })} name="password" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                {errors.password?.type === 'required' && <span className='text-red-600'>Password is required</span>}
+
+                                {errors.password?.type === 'minLength' && <span>Password must be 6 characters.</span>}
+                                {errors.password?.type === 'maxLength' && <span>Password must be 20 characters.</span>}
+
+                            </div>
+
+                            <div className="relative mb-4">
+                                <label className="leading-7 text-sm text-gray-600">Re-type Password</label>
+                                <input type="password" {...register("password",
+                                    {
+                                        required: true,
+                                        minLength: 6,
+                                        maxLength: 20
+
+                                    })} name="r_password" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                 {errors.password?.type === 'required' && <span className='text-red-600'>Password is required</span>}
 
                                 {errors.password?.type === 'minLength' && <span>Password must be 6 characters.</span>}

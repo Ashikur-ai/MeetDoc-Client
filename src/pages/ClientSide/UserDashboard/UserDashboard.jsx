@@ -75,9 +75,21 @@ const UserDashboard = () => {
                                                         Manage Users
                                                     </NavLink>
 
+                                                    
+
                                                     <NavLink to="/dashboard/manageDoctors" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
                                                         Manage Doctors
+                                                    </NavLink>
+
+                                                    <NavLink to="/dashboard/addMedicine" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+
+                                                       Add Medicine
+                                                    </NavLink>
+
+                                                    <NavLink to="/dashboard/manageMedicine" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+
+                                                        Manage Medicine
                                                     </NavLink>
 
                                                     <NavLink to="/dashboard/request" className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
@@ -117,12 +129,18 @@ const UserDashboard = () => {
 
                                                         <NavLink to={`/dashboard/manageMeetings/${user.email}`} className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
-                                                            ManageMeetings
+                                                            Manage Requests
                                                         </NavLink>
 
                                                         <NavLink to={`/dashboard/payments/${user.email}`} className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
 
                                                             Payments
+                                                        </NavLink>
+
+
+                                                        <NavLink to={`/dashboard/medicine`} className="flex items-center px-4 py-2.5 text-sm font-medium transition-all duration-200  hover:text-white rounded-lg hover:bg-indigo-600 active:underline group">
+
+                                                            Buy Medicine
                                                         </NavLink>
 
                                                         
@@ -149,10 +167,10 @@ const UserDashboard = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col flex-1 border min-h-screen ">
+                    <div className="flex flex-col flex-1  min-h-screen ">
                         <main>
                             <div className="py-6">
-                                <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
+                                <div className="px-4 mt-2 shadow-2xl ml-10 rounded-2xl border py-10 max-w-7xl sm:px-6 md:px-8">
                                     <Outlet></Outlet>
                                 </div>
                             </div>

@@ -26,6 +26,10 @@ import AboutPage from "../pages/ClientSide/AboutPage/AboutPage";
 import CategoryDoc from "../pages/ClientSide/CategoryDoc/CategoryDoc";
 import Payment from "../pages/ClientSide/Payment/Payment";
 import Payments from "../pages/ClientSide/Payments/Payments";
+import General from "../pages/AdminSide/General/General";
+import Medicine from "../pages/ClientSide/Medicine/Medicine";
+import AddMedicine from "../pages/AdminSide/Medicine/AddMedicine";
+import ManageMedicine from "../pages/AdminSide/Medicine/ManageMedicine";
 
 
 
@@ -36,7 +40,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: ({ params }) => fetch(`http://localhost:5000/feedback`)
             },
             {
                 path: "/login",
@@ -91,8 +96,12 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><UserDashboard></UserDashboard></PrivateRoute>,
         children: [
-        
-        // admin url 
+
+            // admin url 
+            {
+                path: '/dashboard',
+                element: <General></General>
+            },
             {
                 path: 'manageUsers',
                 element: <ManageUsers></ManageUsers>
@@ -105,7 +114,15 @@ const router = createBrowserRouter([
                 path: 'request',
                 element: <MeetingRequest></MeetingRequest>
             },
-            
+            {
+                path: 'addMedicine',
+                element: <AddMedicine></AddMedicine>
+            },
+            {
+                path: 'manageMedicine',
+                element: <ManageMedicine></ManageMedicine>
+            },
+
             // doctor url
             {
                 path: 'editDocProfile',
@@ -140,6 +157,10 @@ const router = createBrowserRouter([
             {
                 path: 'updateProfile',
                 element: <UpdateClientProfile></UpdateClientProfile>
+            },
+            {
+                path: 'medicine',
+                element: <Medicine></Medicine>
             }
         ]
 

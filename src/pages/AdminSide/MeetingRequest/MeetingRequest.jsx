@@ -16,7 +16,7 @@ const MeetingRequest = () => {
         }
     })
 
-    
+
     const handleRequest = (meeting) => {
         axiosPublic.patch(`/acceptRequest/${meeting._id}`)
             .then(res => {
@@ -31,7 +31,7 @@ const MeetingRequest = () => {
                         timer: 1500
                     });
                 }
-        })
+            })
     }
 
     const handleDeleteRequest = (meeting) => {

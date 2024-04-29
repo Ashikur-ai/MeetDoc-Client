@@ -34,19 +34,19 @@ const Doctors = () => {
                     <div className="grid lg:grid-cols-4">
                         {
                             bestDoc?.map(doctor =>
-                                
+
                                 <div key={doctor._id} className="card m-5 glass">
                                     <Link to={`/docDetails/${doctor.email}`}><figure><img className='' src={doctor?.url} alt="car!" /></figure></Link>
-                                <div className="card-body">
-                                    <h2 className="card-title">{ doctor.name }</h2>
-                                    <p>{doctor.category}</p>              
-                                </div>
+                                    <div className="card-body">
+                                        <h2 className="card-title">{doctor.name}</h2>
+                                        <p>{doctor.category}</p>
+                                    </div>
                                 </div>
                             )
                         }
                     </div>
 
-                    
+
                 </div>
             </section>
         </>

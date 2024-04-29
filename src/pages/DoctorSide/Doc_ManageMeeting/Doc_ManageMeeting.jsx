@@ -19,8 +19,8 @@ const Doc_ManageMeeting = () => {
         }
     })
 
-    
-    
+
+
 
     return (
         <div>
@@ -48,7 +48,7 @@ const Doc_ManageMeeting = () => {
                                 <th>Venue</th>
                                 <th>Problem</th>
                                 <th>Status</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
@@ -68,7 +68,7 @@ const Doc_ManageMeeting = () => {
                                         <td>
                                             {meeting.status ? <>{meeting.status}</> : <p>Not accepted yet!</p>}
                                         </td>
-                                        
+
                                     </tr>)
                                     :
                                     <></>

@@ -45,7 +45,7 @@ const Login = () => {
                             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Connect with your Doctor effortlessly and manage meetings seamlessly</h1>
                             
                         </div>
-                         <img className='w-1/2  object-center mx-auto object-cover' src="https://i.ibb.co/3vjmTN1/Secure-login-pana.png" alt="img" />
+                        <img className='w-1/2  object-center mx-auto object-cover' src="https://i.ibb.co/QFBQ8C8/login.png" alt="img" />
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form className="card-body" onSubmit={handleLogin}>

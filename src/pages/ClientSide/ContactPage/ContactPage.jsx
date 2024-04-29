@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../../../provider/AuthProvider';
 
 const ContactPage = () => {
+    const axiosPublic = useAxiosPublic();
+    const {user} = useContext(AuthContext);
+
     const handleFeedback = (event) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
+        const img_url = user?.photoURL;
         const message = form.message.value;
-        console.log(name, email, message);
-        toast.success('success');
+        const data = { name, email, img_url, message }
+        axiosPublic.post('/feedback', data)
+            .then(res => {
+                if (res.data.insertedId) {
+                    toast.success('Your feedback accepted.');
+            }
+        })
 
     }
     return (
         <section className="text-gray-600 body-font relative">
+            <Helmet>
+                <title>MeetDoc | Feedback</title>
+            </Helmet>
             <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
                 <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
                     <iframe width="100%" height="100%" className="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14602.700322526805!2d90.34355868938995!3d23.794581992112423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0e96fce29dd%3A0x6ccd9e51aba9e64d!2sMirpur-1%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1713580530551!5m2!1sen!2sbd"></iframe>
