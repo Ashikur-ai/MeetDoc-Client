@@ -30,6 +30,7 @@ import General from "../pages/AdminSide/General/General";
 import Medicine from "../pages/ClientSide/Medicine/Medicine";
 import AddMedicine from "../pages/AdminSide/Medicine/AddMedicine";
 import ManageMedicine from "../pages/AdminSide/Medicine/ManageMedicine";
+import Carts from "../pages/ClientSide/Medicine/Carts";
 
 
 
@@ -161,6 +162,11 @@ const router = createBrowserRouter([
             {
                 path: 'medicine',
                 element: <Medicine></Medicine>
+            },
+            
+            {
+                path: 'cart/:email',
+                element: <Carts></Carts>
             }
         ]
 
